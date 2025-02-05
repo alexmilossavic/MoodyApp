@@ -24,7 +24,7 @@ fun MoodScreen(navController: NavController, viewModel: MoodViewModel) {
 
         LazyColumn {
             items(moods) { mood ->
-                MoodItem(mood)  // ✅ MoodItem korrekt aufgerufen
+                MoodItem(mood)
             }
         }
     }
@@ -40,11 +40,9 @@ fun MoodItem(mood: MoodEntry) {
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = "Stimmung: ${mood.mood}", style = MaterialTheme.typography.titleMedium)
-            Spacer(modifier = Modifier.height(4.dp))
             Text(text = "Notiz: ${mood.note}", style = MaterialTheme.typography.bodyMedium)
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(text = "Datum: ${mood.date}", style = MaterialTheme.typography.labelSmall)
         }
     }
 }
+
 

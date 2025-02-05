@@ -1,6 +1,4 @@
-
 package com.example.moodyapp.viewmodel
-
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
