@@ -1,4 +1,4 @@
-package com.example.moodyapp
+package com.example.moodyapp.viewmodel
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -39,5 +39,3 @@ fun MoodyAppPreview() {
         MoodyApp()
     }
 }
-
-

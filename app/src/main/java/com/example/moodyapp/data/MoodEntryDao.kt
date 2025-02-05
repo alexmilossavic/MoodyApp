@@ -12,5 +12,5 @@ interface MoodEntryDao {
     fun getAllMoods(): Flow<List<MoodEntry>>
 
     @Delete
-    suspend fun deleteMood(moodEntry: MoodEntry)  // Methode zum Löschen eines Eintrags
+    suspend fun deleteMood(moodEntry: MoodEntry)
 }

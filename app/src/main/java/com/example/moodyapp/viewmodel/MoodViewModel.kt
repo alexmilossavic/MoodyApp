@@ -27,7 +27,6 @@ class MoodViewModel(application: Application) : AndroidViewModel(application) {
 
     fun addMood(mood: String, note: String) {
         val formattedDate = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault()).format(Date())
-
         viewModelScope.launch {
             dao.insertMood(MoodEntry(mood = mood, note = note, date = formattedDate))
         }
@@ -36,17 +35,8 @@ class MoodViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteMoodEntry(mood: MoodEntry) {
         viewModelScope.launch {
             dao.deleteMood(mood)
-            // Aktualisiere die Liste nach dem Löschen
-            loadMoodEntries()
-        }
-    }
-
-    private fun loadMoodEntries() {
-        viewModelScope.launch {
-            dao.getAllMoods().collect { moodList ->
-                _moods.value = moodList
-            }
         }
     }
 }
+
 
