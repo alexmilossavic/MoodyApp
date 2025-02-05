@@ -14,10 +14,13 @@ fun MoodEntryItem(mood: MoodEntry) {
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
+
             Text(text = "Stimmung: ${mood.mood}", style = MaterialTheme.typography.titleMedium)
             Spacer(modifier = Modifier.height(4.dp))
             Text(text = "Notiz: ${mood.note}", style = MaterialTheme.typography.bodyMedium)
             Spacer(modifier = Modifier.height(4.dp))
+
+
             Text(text = "Eingetragen am: ${mood.date}", style = MaterialTheme.typography.labelSmall)
         }
     }
