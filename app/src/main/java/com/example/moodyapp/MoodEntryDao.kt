@@ -10,4 +10,7 @@ interface MoodEntryDao {
 
     @Query("SELECT * FROM mood_entries ORDER BY date DESC")
     fun getAllMoods(): Flow<List<MoodEntry>>
+
+    @Delete
+    suspend fun deleteMood(moodEntry: MoodEntry)  // Methode zum Löschen eines Eintrags
 }
