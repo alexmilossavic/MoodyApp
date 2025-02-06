@@ -11,6 +11,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.moodyapp.data.MoodEntry
+import com.example.moodyapp.uiview.MoodEntryItem
 import com.example.moodyapp.viewmodel.MoodViewModel
 
 @Composable
@@ -24,9 +25,7 @@ fun MoodScreen(navController: NavController, viewModel: MoodViewModel) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        // **Geändert:** Zwei Buttons in einer Zeile:
-        // 1. "Neuen Eintrag hinzufügen"
-        // 2. "Statistiken anzeigen" (führt zur Statistik-Seite)
+        // Zwei Buttons in einer Zeile:
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
@@ -68,6 +67,16 @@ fun MoodScreen(navController: NavController, viewModel: MoodViewModel) {
                 }
             }
         }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // ✅ Zurück zum MainScreen Button
+        Button(
+            onClick = { navController.navigate("mainScreen") }, // ✅ Navigiert zum MainScreen
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Zurück zum Hauptmenü")
+        }
     }
 
     if (showDeleteConfirmation && entryToDelete != null) {
@@ -93,5 +102,3 @@ fun MoodScreen(navController: NavController, viewModel: MoodViewModel) {
         )
     }
 }
-
-

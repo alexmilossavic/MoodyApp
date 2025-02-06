@@ -19,7 +19,7 @@ fun AddMoodScreen(navController: NavController, viewModel: MoodViewModel) {
     var note by remember { mutableStateOf(TextFieldValue("")) }
 
     // Zustände für den Icon-Anpassungsdialog
-    var iconToEditIndex by remember { mutableStateOf(-1) }
+    var iconToEditIndex by remember { mutableIntStateOf(-1) }
     var showIconEditDialog by remember { mutableStateOf(false) }
     var newIconText by remember { mutableStateOf("") }
 

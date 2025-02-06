@@ -19,15 +19,16 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavController) {
-    // Nach 5 Sekunden wird zur Hauptseite navigiert
-    LaunchedEffect(key1 = true) {
-        delay(5000L) // 5000 Millisekunden = 5 Sekunden
-        navController.navigate("moodScreen") {
+    // Navigiere nach 5 Sekunden zur Route "mainScreen"
+    LaunchedEffect(Unit) {
+        delay(5000L)
+        navController.navigate("mainScreen") {
+            // Entfernt den SplashScreen aus dem Backstack
             popUpTo("splashScreen") { inclusive = true }
         }
     }
 
-    // Oberfläche des Splash Screens mit weißem Hintergrund
+    // Anzeige des SplashScreens mit einem Logo
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.White
@@ -36,11 +37,11 @@ fun SplashScreen(navController: NavController) {
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            // Das Logo wird 10-mal so groß angezeigt (1500.dp)
+            // Hier wird das Logo angezeigt. (Falls 1500.dp zu groß ist, benutze eine moderate Größe, z.B. 300.dp)
             Image(
                 painter = painterResource(id = R.drawable.gelb),
                 contentDescription = "App Logo",
-                modifier = Modifier.size(1500.dp),
+                modifier = Modifier.size(300.dp),
                 contentScale = ContentScale.Fit
             )
         }
