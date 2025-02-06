@@ -1,4 +1,4 @@
-package com.example.moodyapp.ui
+package com.example.moodyapp.uiview
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

@@ -1,16 +1,23 @@
-package com.example.moodyapp.navigation
+package com.example.moodyapp.viewmodel
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.moodyapp.uiview.SplashScreen
-import com.example.moodyapp.ui.MoodScreen
 import com.example.moodyapp.ui.AddMoodScreen
+import com.example.moodyapp.ui.ChartsScreen
+import com.example.moodyapp.ui.MainScreen
+import com.example.moodyapp.ui.MoodScreen
 import com.example.moodyapp.ui.StatisticsScreen
-import com.example.moodyapp.viewmodel.MoodViewModel
+import com.example.moodyapp.ui.SuggestionsScreen
+import com.example.moodyapp.uiview.SplashScreen
+import com.example.moodyapp.uiview.CalendarScreen
+import com.example.moodyapp.uiview.BottomNavScreen
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NavGraph() {
     val navController = rememberNavController()
@@ -20,21 +27,29 @@ fun NavGraph() {
         navController = navController,
         startDestination = "splashScreen"
     ) {
-        // Splash Screen als Startdestination
         composable("splashScreen") {
             SplashScreen(navController = navController)
         }
-        // Hauptseite der App (MoodScreen)
-        composable("moodScreen") {
-            MoodScreen(navController = navController, viewModel = viewModel)
+        composable("mainScreen") {
+            MainScreen(navController = navController, viewModel = viewModel)
         }
-        // Screen zum Hinzufügen eines neuen Mood-Eintrags
         composable("addMoodScreen") {
             AddMoodScreen(navController = navController, viewModel = viewModel)
         }
-        // Statistik-Screen
         composable("statisticsScreen") {
             StatisticsScreen(navController = navController, viewModel = viewModel)
+        }
+        composable("calendarScreen") {
+            CalendarScreen(navController = navController) // ✅ FIXED: Jetzt mit navController
+        }
+        composable("chartsScreen") {
+            ChartsScreen(navController = navController)
+        }
+        composable("moodScreen") {
+            MoodScreen(navController = navController, viewModel = viewModel)
+        }
+        composable("suggestionsScreen") {
+            SuggestionsScreen(navController = navController)
         }
     }
 }
